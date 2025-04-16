@@ -7,9 +7,22 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     #map { height: 100vh; }
+    
+    /* Style for the logo */
+    #logo {
+      position: absolute;
+      top: 10px;  /* 10px from the top */
+      right: 10px;  /* 10px from the right */
+      width: 100px;  /* Set the logo width (adjust as needed) */
+      height: auto;  /* Maintain aspect ratio */
+      z-index: 1000;  /* Ensure the logo is on top of other content */
+    }
   </style>
 </head>
 <body>
+  <!-- Logo image, replace 'logo.png' with the actual logo file -->
+  <img id="logo" src="logo.jpg" alt="Logo">
+
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
