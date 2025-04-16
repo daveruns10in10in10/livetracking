@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Live Location</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Default starting point
+    var lat = 37.7749; // Replace with dynamic value
+    var lon = -122.4194;
+
+    var map = L.map('map').setView([lat, lon], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var marker = L.marker([lat, lon]).addTo(map)
+      .bindPopup('Current location')
+      .openPopup();
+
+    // Optional: refresh location every X seconds
+    setInterval(() => {
+      fetch("location.json") // could point to your backend JSON
+        .then(res => res.json())
+        .then(data => {
+          marker.setLatLng([data.lat, data.lon]);
+          map.setView([data.lat, data.lon]);
+        });
+    }, 10000); // update every 10 seconds
+  </script>
+</body>
+</html>
