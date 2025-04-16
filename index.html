@@ -5,50 +5,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <!-- Add the Leaflet GPX plugin CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-gpx/dist/leaflet-gpx.css" />
+  
   <style>
     #map { height: 100vh; }
     
     /* Style for the logo */
     #logo {
       position: absolute;
-      top: 10px;  /* 10px from the top */
-      right: 10px;  /* 10px from the right */
-      width: 250px;  /* Set the logo width (adjust as needed) */
-      height: auto;  /* Maintain aspect ratio */
-      z-index: 1000;  /* Ensure the logo is on top of other content */
+      top: 10px;
+      right: 10px;
+      width: 100px;
+      height: auto;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
-  <!-- Logo image, replace 'logo.png' with the actual logo file -->
-  <img id="logo" src="logo.jpg" alt="Logo">
+  <!-- Logo image -->
+  <img id="logo" src="images/logo.png" alt="Logo">
 
   <div id="map"></div>
 
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  
+  <!-- Leaflet GPX plugin JS -->
+  <script src="https://unpkg.com/leaflet-gpx/dist/leaflet-gpx.js"></script>
+
   <script>
-    // Default starting point
-    var lat = 51.0447; // Replace with dynamic value
-    var lon = -114.0719;
-   
+    // St. John's, Newfoundland coordinates
+    var lat = 47.5615; // St. John's latitude
+    var lon = -52.7126; // St. John's longitude
+
     var map = L.map('map').setView([lat, lon], 13);
+    
+    // Add tile layer from OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
+    // Add marker for St. John's
     var marker = L.marker([lat, lon]).addTo(map)
-      .bindPopup('Current location')
+      .bindPopup('St. John\'s, Newfoundland')
       .openPopup();
 
-    // Optional: refresh location every X seconds
+    // Optional: refresh location every X seconds (if needed)
     setInterval(() => {
-      fetch("location.json") // could point to your backend JSON
+      fetch("location.json") // Assuming this is your dynamic location data
         .then(res => res.json())
         .then(data => {
           marker.setLatLng([data.lat, data.lon]);
           map.setView([data.lat, data.lon]);
         });
-    }, 10000); // update every 10 seconds
+    }, 10000); // Update every 10 seconds
+
+    // GPX file path (you can replace this with your actual GPX file URL)
+    var gpxUrl = "Day 1_ St. John's, Newfoundland.gpx"; // e.g., "gpx/yourfile.gpx"
+
+    // Load GPX file and add it to the map
+    new L.GPX(gpxUrl, {
+      async: true,  // Load the GPX file asynchronously
+      marker_options: {
+        startIconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
+        endIconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
+        shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png'
+      }
+    }).on('loaded', function(e) {
+      // When GPX is loaded, zoom the map to fit the GPX track
+      map.fitBounds(e.target.getBounds());
+    }).addTo(map);
   </script>
 </body>
 </html>
