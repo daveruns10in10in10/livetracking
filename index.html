@@ -48,8 +48,7 @@
     }).addTo(map);
 
     // Add marker for the starting point for St. John's
-      
-    var marker = L.marker([47.582211, -52.692603]).addTo(map)
+    var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
       .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
       .openPopup();
 
@@ -58,7 +57,7 @@
       fetch("location.json") // Assuming this is your dynamic location data
         .then(res => res.json())
         .then(data => {
-          marker.setLatLng([data.lat, data.lon]);
+          livemarker.setLatLng([data.lat, data.lon]);
           map.setView([data.lat, data.lon]);
         });
     }, 10000); // Update every 10 seconds
