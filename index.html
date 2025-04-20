@@ -70,9 +70,9 @@
     new L.GPX(gpxUrl, {
       async: true,  // Load the GPX file asynchronously
       marker_options: {
-        startIconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
-        endIconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
-        shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png'
+        startIconUrl: null,
+        endIconUrl: null,
+        shadowUrl: null
       }
     }).on('loaded', function(e) {
       // When GPX is loaded, zoom the map to fit the GPX track
