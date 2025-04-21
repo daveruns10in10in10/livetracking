@@ -8,11 +8,14 @@
   
   <!-- Add the Leaflet GPX plugin CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-gpx/dist/leaflet-gpx.css" />
+  <!-- Add library to read Excel files -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  
   
   <style>
     #map { height: 100vh; }
     
-    /* Style for the logo */
+    /* Style for the logo */  
     #logo {
       position: absolute;
       top: 10px;
@@ -95,21 +98,23 @@
     //  .openPopup();
 
     // Load markers from file
-    fetch("https://raw.githubusercontent.com/daveruns10in10in10/livetracking/main/markers/markers.xlsx")
-      .then(response => response.text())
-      .then(csv => {
-        const lines = csv.trim().split("\n").slice(1); // Skip header line
-        lines.forEach(line => {
-          const [lat, lon, text] = line.split(",");
+    fetch("https://daveruns10in10in10.github.io/livetracking/markers/markers.xlsx")
+      .then(res => res.arrayBuffer()) // Excel files are binary
+      .then(arrayBuffer => {
+        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const data = XLSX.utils.sheet_to_json(sheet);
     
-          const latNum = parseFloat(lat);
-          const lonNum = parseFloat(lon);
+        data.forEach(row => {
+          const lat = parseFloat(row.lat);
+          const lon = parseFloat(row.lon);
+          const text = row.text;
     
-          // Check if lat/lon are valid numbers
-          if (!isNaN(latNum) && !isNaN(lonNum)) {
-            L.marker([latNum, lonNum])
+          if (!isNaN(lat) && !isNaN(lon)) {
+            L.marker([lat, lon])
               .addTo(map)
-              .bindPopup(text.replace(/"/g, ''));
+              .bindPopup(text);
           }
         });
       });
