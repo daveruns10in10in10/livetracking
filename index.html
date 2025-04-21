@@ -90,10 +90,30 @@
     // ADDING MARKERS  ----------------------------------------------------------------------------------------------------------------------------
     
     // Add marker for the starting point for St. John's
-    var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
-      .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
-      .openPopup();
+    //var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
+    //  .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
+    //  .openPopup();
 
+    // Load markers from CSV
+    fetch("https://raw.githubusercontent.com/daveruns10in10in10/livetracking/main/markers/markers.csv")
+      .then(response => response.text())
+      .then(csv => {
+        const lines = csv.trim().split("\n").slice(1); // Skip header line
+        lines.forEach(line => {
+          const [lat, lon, text] = line.split(",");
+    
+          const latNum = parseFloat(lat);
+          const lonNum = parseFloat(lon);
+    
+          // Check if lat/lon are valid numbers
+          if (!isNaN(latNum) && !isNaN(lonNum)) {
+            L.marker([latNum, lonNum])
+              .addTo(map)
+              .bindPopup(text.replace(/"/g, ''));
+          }
+        });
+      });
+    
   </script>
 </body>
 </html>
