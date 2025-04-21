@@ -94,8 +94,8 @@
     //  .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
     //  .openPopup();
 
-    // Load markers from CSV
-    fetch("https://raw.githubusercontent.com/daveruns10in10in10/livetracking/main/markers/markers.csv")
+    // Load markers from file
+    fetch("https://raw.githubusercontent.com/daveruns10in10in10/livetracking/main/markers/markers.xlsx")
       .then(response => response.text())
       .then(csv => {
         const lines = csv.trim().split("\n").slice(1); // Skip header line
