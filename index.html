@@ -98,24 +98,13 @@
     //  .openPopup();
 
     // Load markers from file
-    fetch("https://daveruns10in10in10.github.io/livetracking/markers/markers.xlsx")
-      .then(res => res.arrayBuffer()) // Excel files are binary
-      .then(arrayBuffer => {
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const data = XLSX.utils.sheet_to_json(sheet);
-    
-        data.forEach(row => {
-          const lat = parseFloat(row.lat);
-          const lon = parseFloat(row.lon);
-          const text = row.text;
-    
-          if (!isNaN(lat) && !isNaN(lon)) {
-            L.marker([lat, lon])
-              .addTo(map)
-              .bindPopup(text);
-          }
+    fetch("markers/markers.json")
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(marker => {
+          L.marker([marker.lat, marker.lon])
+            .addTo(map)
+            .bindPopup(marker.text);
         });
       });
     
