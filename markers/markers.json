@@ -1,12 +1,12 @@
 [
 {"lat":47.582211,"lon":-52.692603,"text":"<strong>Day 1</strong>: Friday, May 16<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi"},
-{"lat":44.64861,"lon":-63.58786,"text":"<strong>Day 2</strong>: Saturday, May 17<br><strong>City</strong>: Halifax, Nova Scotia<br><strong>Start:</strong> tbd"},
-{"lat":46.23343,"lon":-63.13503,"text":"<strong>Day 3</strong>: Sunday, May 18<br><strong>City</strong>: Charlottetown, PEI<br><strong>Start:</strong> tbd"},
-{"lat":45.96571,"lon":-66.65938,"text":"<strong>Day 4</strong>: Monday, May 19<br><strong>City</strong>: Fredericton, New Brunswick<br><strong>Start:</strong> tbd"},
-{"lat":45.55976,"lon":-73.55626,"text":"<strong>Day 5</strong>: Tuesday, May 20<br><strong>City</strong>: Montreal, Quebec<br><strong>Start:</strong> tbd"},
-{"lat":43.64176,"lon":-79.38513,"text":"<strong>Day 6</strong>: Wednesday, May 21<br><strong>City</strong>: Toronto, Ontario<br><strong>Start:</strong> tbd"},
-{"lat":49.87146,"lon":-97.22856,"text":"<strong>Day 7</strong>: Thursday, May 22<br><strong>City</strong>: Winnipeg, Manitoba<br><strong>Start:</strong> tbd"},
-{"lat":50.42885,"lon":-104.59787,"text":"<strong>Day 8</strong>: Friday, May 23<br><strong>City</strong>: Regina, Saskatchewan<br><strong>Start:</strong> tbd"},
-{"lat":49.27673,"lon":-123.15188,"text":"<strong>Day 9</strong>: Saturday, May 24<br><strong>City</strong>: Vancouver, BC<br><strong>Start:</strong> tbd"},
-{"lat":51.03635,"lon":-114.05496,"text":"<strong>Day 10</strong>: Sunday, May 25<br><strong>City</strong>: Calgary, Alberta<br><strong>Start:</strong> tbd"}
+{"lat":44.64861,"lon":-63.58786,"text":"<strong>Day 2</strong>: Saturday, May 17<br><strong>City</strong>: Halifax, Nova Scotia<br><strong>Start:</strong> Blue Nose Expo"},
+{"lat":46.23343,"lon":-63.13503,"text":"<strong>Day 3</strong>: Sunday, May 18<br><strong>City</strong>: Charlottetown, PEI<br><strong>Start:</strong> NE Victoria Park"},
+{"lat":45.96571,"lon":-66.65938,"text":"<strong>Day 4</strong>: Monday, May 19<br><strong>City</strong>: Fredericton, New Brunswick<br><strong>Start:</strong> East of Delta Hotel"},
+{"lat":45.55976,"lon":-73.55626,"text":"<strong>Day 5</strong>: Tuesday, May 20<br><strong>City</strong>: Montreal, Quebec<br><strong>Start:</strong> Montreal Olympic Park"},
+{"lat":43.64176,"lon":-79.38513,"text":"<strong>Day 6</strong>: Wednesday, May 21<br><strong>City</strong>: Toronto, Ontario<br><strong>Start:</strong> Roundhouse Park"},
+{"lat":49.87146,"lon":-97.22856,"text":"<strong>Day 7</strong>: Thursday, May 22<br><strong>City</strong>: Winnipeg, Manitoba<br><strong>Start:</strong> Assiniboine Park parking lot"},
+{"lat":50.42885,"lon":-104.59787,"text":"<strong>Day 8</strong>: Friday, May 23<br><strong>City</strong>: Regina, Saskatchewan<br><strong>Start:</strong> Conexus Art Centre"},
+{"lat":49.27673,"lon":-123.15188,"text":"<strong>Day 9</strong>: Saturday, May 24<br><strong>City</strong>: Vancouver, BC<br><strong>Start:</strong> Kitsilano McNicoll"},
+{"lat":51.03635,"lon":-114.05496,"text":"<strong>Day 10</strong>: Sunday, May 25<br><strong>City</strong>: Calgary, Alberta<br><strong>Start:</strong> Stampede Park"}
 ]
