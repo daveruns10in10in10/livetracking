@@ -66,7 +66,7 @@
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // CITY ROUTES & MARKERS -------------------------------------------------------------------------------------------------------------------
+    // CITY ROUTES ----------------------------------------------------------------------------------------------------------------------------
 
     // Load list of GPX files from index.json
     fetch("routes/index.json")
@@ -86,28 +86,14 @@
           }).addTo(map);
         });
       });
+
+    // ADDING MARKERS  ----------------------------------------------------------------------------------------------------------------------------
     
     // Add marker for the starting point for St. John's
     var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
       .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
       .openPopup();
 
-    // GPX file path (you can replace this with your actual GPX file URL)
-    //var gpxUrl = "routes/day1.gpx"; // e.g., "gpx/yourfile.gpx"
-    
-    // Load GPX file and add it to the map
-   // new L.GPX(gpxUrl, {
-//      async: true,  // Load the GPX file asynchronously
-  //    marker_options: {
-    //    startIconUrl: null,
-      //  endIconUrl: null,
-        //shadowUrl: null
-//      }
-    //}).on('loaded', function(e) {
-//      // When GPX is loaded, zoom the map to fit the GPX track
-      //map.fitBounds(e.target.getBounds());
-    //}).addTo(map);
-    
   </script>
 </body>
 </html>
