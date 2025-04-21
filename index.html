@@ -36,20 +36,17 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
 
   <script>
-    // St. John's, Newfoundland coordinates
+
+    // LIVE MARKER ------------------------------------------------------------------------------------------------------------------------------
+    
+    // live marker -> to pull from the server and the live location
     var lat = 47.5615; // St. John's latitude
     var lon = -52.7126; // St. John's longitude
-
     var map = L.map('map').setView([lat, lon], 13);
-    
-    // Add tile layer from OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
 
-    // Add marker for the starting point for St. John's
-    var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
-      .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
+   // Add live marker
+    var livemarker = L.marker([lat, lon]).addTo(map)
+      .bindPopup("<strong>Dave's live location</strong>")
       .openPopup();
 
     // Optional: refresh location every X seconds (if needed)
@@ -61,6 +58,20 @@
           map.setView([data.lat, data.lon]);
         });
     }, 10000); // Update every 10 seconds
+
+    // MAP LAYER ------------------------------------------------------------------------------------------------------------------------------
+  
+    // Add tile layer from OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // CITY ROUTES & MARKERS -------------------------------------------------------------------------------------------------------------------
+    
+    // Add marker for the starting point for St. John's
+    var day1marker = L.marker([47.582211, -52.692603]).addTo(map)
+      .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
+      .openPopup();
 
     // GPX file path (you can replace this with your actual GPX file URL)
     var gpxUrl = "day1stjohns.gpx"; // e.g., "gpx/yourfile.gpx"
