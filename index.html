@@ -101,7 +101,7 @@
         data.forEach(marker => {
           L.marker([marker.lat, marker.lon])
             .addTo(map)
-            .bindPopup(marker.text,{ autoClose: false, closeOnClick: false }));
+            .bindPopup(marker.text,{ autoClose: false, closeOnClick: false });
         });
       });
     
