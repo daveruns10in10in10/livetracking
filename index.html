@@ -72,12 +72,12 @@
     // COUNTDOWN ----------------------------------------------------------------------------------------------------------------------------
 
     function updateCountdown() {
-    const today = new Date();
-    const eventDate = new Date("2025-05-16T00:00:00");
-    const timeDiff = eventDate - today;
-    const daysRemaining = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
-    document.getElementById("countdown-tile").textContent =
-      `Days until 10in10in10: ${daysRemaining}`;
+      const today = new Date();
+      const eventDate = new Date("2025-05-16T00:00:00");
+      const timeDiff = eventDate - today;
+      const daysRemaining = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+      document.getElementById("countdown-tile").innerHTML =
+        `Days until 10in10in10: <strong>${daysRemaining}</strong>`;
     }
     updateCountdown();
 
