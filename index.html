@@ -39,8 +39,21 @@
       font-family: sans-serif;
       z-index: 1000;
     }
+
+    .locate-button {
+      background-color: #fff;
+      width: 34px;
+      height: 34px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+      border: none;
+    }
     
   </style>
+  
 </head>
 <body>
   <!-- Logo image -->
@@ -90,6 +103,54 @@
     //      map.setView([data.lat, data.lon]);
     //    });
     //}, 10000); // Update every 10 seconds
+
+    // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
+    
+    // Custom control to locate user
+    L.Control.Locate = L.Control.extend({
+      onAdd: function(map) {
+        const btn = L.DomUtil.create('button', 'leaflet-bar locate-button');
+        btn.innerHTML = '📍';
+        btn.title = 'Find my location';
+    
+        // Prevent click from propagating to the map
+        L.DomEvent.on(btn, 'click', L.DomEvent.stopPropagation)
+                  .on(btn, 'click', L.DomEvent.preventDefault)
+                  .on(btn, 'click', () => {
+                    if (!navigator.geolocation) {
+                      alert("Geolocation is not supported by your browser.");
+                      return;
+                    }
+    
+                    navigator.geolocation.getCurrentPosition(
+                      (position) => {
+                        const { latitude, longitude } = position.coords;
+                        map.setView([latitude, longitude], 14);
+                        L.marker([latitude, longitude]).addTo(map)
+                          .bindPopup("You are here")
+                          .openPopup();
+                      },
+                      () => {
+                        alert("Unable to retrieve your location.");
+                      }
+                    );
+                  });
+    
+        return btn;
+      },
+    
+      onRemove: function(map) {
+        // Nothing to clean up
+      }
+    });
+    
+    // Add the control to the map (bottom-right or wherever you want)
+    L.control.locate = function(opts) {
+      return new L.Control.Locate(opts);
+    }
+    
+    L.control.locate({ position: 'bottomright' }).addTo(map);
+
     
     // MAP LAYER ------------------------------------------------------------------------------------------------------------------------------
   
