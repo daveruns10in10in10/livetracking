@@ -20,19 +20,34 @@
       width: 250px;
       height: auto;
       z-index: 1000;
-      
+    }
+    
     .leaflet-popup-content {
       font-size: 16px; /* or whatever size you like */
       line-height: 1.4;
     }
+
+    #countdown-tile {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: white;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      font-size: 18px;
+      font-family: sans-serif;
+      z-index: 1000;
     }
+    
   </style>
 </head>
 <body>
   <!-- Logo image -->
   <img id="logo" src="pictures/logo.jpg" alt="Logo">
-
+  <div id="countdown-tile">Days until 10in10in10: ...</div>
   <div id="map"></div>
+  
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -41,6 +56,18 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
 
   <script>
+
+    // COUNTDOWN ----------------------------------------------------------------------------------------------------------------------------
+
+    function updateCountdown() {
+    const today = new Date();
+    const eventDate = new Date("2025-05-16T00:00:00");
+    const timeDiff = eventDate - today;
+    const daysRemaining = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+    document.getElementById("countdown-tile").textContent =
+      `Days until 10in10in10: ${daysRemaining}`;
+    }
+    updateCountdown();
 
     // LIVE MARKER ----------------------------------------------------------------------------------------------------------------------------
     
