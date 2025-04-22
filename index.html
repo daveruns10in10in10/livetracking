@@ -95,15 +95,15 @@
     //  .openPopup();
 
     // Load markers from file
-    //fetch("markers/markers.json")
-    //  .then(res => res.json())
-    //  .then(data => {
-    //    data.forEach(marker => {
-    //      L.marker([marker.lat, marker.lon])
-    //        .addTo(map)
-    //        .bindPopup(marker.text,{ autoClose: false, closeOnClick: false }));
-    //    });
-    //  });
+    fetch("markers/markers.json")
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(marker => {
+          L.marker([marker.lat, marker.lon])
+            .addTo(map)
+            .bindPopup(marker.text,{ autoClose: false, closeOnClick: false }));
+        });
+      });
     
   </script>
 </body>
