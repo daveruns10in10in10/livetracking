@@ -37,6 +37,29 @@
 
   <script>
 
+    // LIVE MARKER ----------------------------------------------------------------------------------------------------------------------------
+    
+    // live marker -> to pull from the server and the live location
+
+    var lat = 50.4452; // Regina
+    var lon = -104.6189; // Regina
+    var map = L.map('map').setView([lat, lon], 13);
+
+   // Add live marker
+    var livemarker = L.marker([lat, lon]).addTo(map)
+      .bindPopup("<strong>Dave's live location</strong>")
+      .openPopup();
+
+    // Optional: refresh location every X seconds (if needed)
+    //setInterval(() => {
+    //  fetch("location.json") // Assuming this is your dynamic location data
+    //    .then(res => res.json())
+    //    .then(data => {
+    //      livemarker.setLatLng([data.lat, data.lon]);
+    //      map.setView([data.lat, data.lon]);
+    //    });
+    //}, 10000); // Update every 10 seconds
+    
     // MAP LAYER ------------------------------------------------------------------------------------------------------------------------------
   
     // Add tile layer from OpenStreetMap
@@ -89,28 +112,7 @@
         });
       });
     
-    // LIVE MARKER ----------------------------------------------------------------------------------------------------------------------------
-    
-    // live marker -> to pull from the server and the live location
 
-    var lat = 50.4452; // Regina
-    var lon = -104.6189; // Regina
-    var map = L.map('map').setView([lat, lon], 13);
-
-   // Add live marker
-    var livemarker = L.marker([lat, lon]).addTo(map)
-      .bindPopup("<strong>Dave's live location</strong>")
-      .openPopup();
-
-    // Optional: refresh location every X seconds (if needed)
-    //setInterval(() => {
-    //  fetch("location.json") // Assuming this is your dynamic location data
-    //    .then(res => res.json())
-    //    .then(data => {
-    //      livemarker.setLatLng([data.lat, data.lon]);
-    //      map.setView([data.lat, data.lon]);
-    //    });
-    //}, 10000); // Update every 10 seconds
     
   </script>
 </body>
