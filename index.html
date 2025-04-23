@@ -111,7 +111,14 @@
     L.Control.Locate = L.Control.extend({
       onAdd: function(map) {
         const btn = L.DomUtil.create('button', 'leaflet-bar locate-button');
-        btn.innerHTML = '📍';
+        btn.style.backgroundImage = "url('pictures/current_loc.jpg')";
+        btn.style.backgroundSize = "contain";
+        btn.style.backgroundRepeat = "no-repeat";
+        btn.style.backgroundPosition = "center";
+        btn.style.width = "34px";
+        btn.style.height = "34px";
+        btn.textContent = ""; // remove any text content, just in case
+
         btn.title = 'Find my location';
     
         // Prevent click from propagating to the map
