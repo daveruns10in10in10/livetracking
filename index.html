@@ -216,11 +216,11 @@
 
     // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
 
-    document.getElementById("goto-dave").addEventListener("click", () => {
+    document.getElementById("dave-btn").addEventListener("click", () => {
       map.setView([lat, lon], 14); // Dave's coordinates (already declared earlier)
     });
     
-    document.getElementById("goto-me").addEventListener("click", () => {
+    document.getElementById("me-btn").addEventListener("click", () => {
       if (!navigator.geolocation) {
         alert("Geolocation is not supported by your browser.");
         return;
