@@ -17,15 +17,38 @@
       line-height: 1.4;
     }
     
-    #sidebar {
+    #sidebar-wrapper {
       position: absolute;
       top: 10px;
       right: 20px;
-      width: 250px;
       z-index: 1000;
+    }
+    
+    #toggle-sidebar {
+      background-color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    
+    #sidebar {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+      max-height: 1000px;
+      opacity: 1;
+    }
+    
+    #sidebar.collapsed {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
     }
     
     #logo {
@@ -35,9 +58,10 @@
     }
     
     #sidebar-tile {
-      width: 100%;
+      width: 250px;
       font-family: sans-serif;
     }
+
 
     #countdown-tile {
       background-color: white;
@@ -107,37 +131,41 @@
 </head>
 <body>
     
-    <div id="sidebar">
-      <img id="logo" src="pictures/logo.jpg" alt="Logo">
-      
-      <div id="sidebar-tile">
-        <!-- Countdown -->
-        <div id="countdown-tile">Days until 10in10in10: ...</div>
+<div id="sidebar-wrapper">
+  <button id="toggle-sidebar">☰</button>
+
+  <div id="sidebar" class="expanded">
+    <img id="logo" src="pictures/logo.jpg" alt="Logo">
     
-        <!-- Locator -->
-        <div id="locator-controls">
-          <span><strong>Dave</strong></span>
-          <button id="dave-btn" class="locate-button"></button>
-    
-          <span><strong>Me</strong></span>
-          <button id="me-btn" class="locate-button"></button>
-        </div>
-    
-        <!-- Donate -->
-        <div id="donate-tile">
-          <div class="donate-title">Donate now!</div>
-          <a href="https://example.com/donation1" target="_blank">
-            <img class="donate-img" src="pictures/donate1.jpg" alt="Donate 1">
-          </a>
-          <a href="https://example.com/donation2" target="_blank">
-            <img class="donate-img" src="pictures/donate2.jpg" alt="Donate 2">
-          </a>
-          <a href="https://example.com/donation3" target="_blank">
-            <img class="donate-img" src="pictures/donate3.jpg" alt="Donate 3">
-          </a>
-        </div>
+    <div id="sidebar-tile">
+      <!-- Countdown -->
+      <div id="countdown-tile">Days until 10in10in10: ...</div>
+
+      <!-- Locator -->
+      <div id="locator-controls">
+        <span><strong>Dave</strong></span>
+        <button id="dave-btn" class="locate-button"></button>
+
+        <span><strong>Me</strong></span>
+        <button id="me-btn" class="locate-button"></button>
+      </div>
+
+      <!-- Donate -->
+      <div id="donate-tile">
+        <div class="donate-title">Donate now!</div>
+        <a href="https://example.com/donation1" target="_blank">
+          <img class="donate-img" src="pictures/donate1.jpg" alt="Donate 1">
+        </a>
+        <a href="https://example.com/donation2" target="_blank">
+          <img class="donate-img" src="pictures/donate2.jpg" alt="Donate 2">
+        </a>
+        <a href="https://example.com/donation3" target="_blank">
+          <img class="donate-img" src="pictures/donate3.jpg" alt="Donate 3">
+        </a>
       </div>
     </div>
+  </div>
+</div>
   
   <div id="map"></div>
 
@@ -270,7 +298,11 @@
         });
       });
     
-
+  // SIDEBAR CONTROL
+    document.getElementById("toggle-sidebar").addEventListener("click", function () {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+  });
     
   </script>
 </body>
