@@ -12,30 +12,33 @@
   <style>
     #map { height: 100vh; }
     
-    /* Style for the logo */  
-    #logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 250px;
-      height: auto;
-      z-index: 1000;
-    }
-    
     .leaflet-popup-content {
       font-size: 18px;
       line-height: 1.4;
     }
-
-    #sidebar-tile {
+    
+    #sidebar {
       position: absolute;
       top: 10px;
       right: 20px;
+      width: 250px;
       z-index: 1000;
-      width: 200px;
-      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
     
+    #logo {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    #sidebar-tile {
+      width: 100%;
+      font-family: sans-serif;
+    }
+
     #countdown-tile {
       background-color: white;
       padding: 10px 15px;
@@ -103,34 +106,38 @@
   
 </head>
 <body>
-  <!-- Logo image -->
-  <img id="logo" src="pictures/logo.jpg" alt="Logo">
-  
-  <!-- Sidebar container for countdown, locators, and donate -->
-  <div id="sidebar-tile">
-    <div id="countdown-tile">Days until 10in10in10: ...</div>
-  
-    <div id="locator-controls">
-      <span><strong>Dave</strong></span>
-      <button id="dave-btn" class="locate-button"></button>
-  
-      <span><strong>Me</strong></span>
-      <button id="me-btn" class="locate-button"></button>
+    
+    <div id="sidebar">
+      <img id="logo" src="pictures/logo.jpg" alt="Logo">
+      
+      <div id="sidebar-tile">
+        <!-- Countdown -->
+        <div id="countdown-tile">Days until 10in10in10: ...</div>
+    
+        <!-- Locator -->
+        <div id="locator-controls">
+          <span><strong>Dave</strong></span>
+          <button id="dave-btn" class="locate-button"></button>
+    
+          <span><strong>Me</strong></span>
+          <button id="me-btn" class="locate-button"></button>
+        </div>
+    
+        <!-- Donate -->
+        <div id="donate-tile">
+          <div class="donate-title">Donate now!</div>
+          <a href="https://example.com/donation1" target="_blank">
+            <img class="donate-img" src="pictures/donate1.jpg" alt="Donate 1">
+          </a>
+          <a href="https://example.com/donation2" target="_blank">
+            <img class="donate-img" src="pictures/donate2.jpg" alt="Donate 2">
+          </a>
+          <a href="https://example.com/donation3" target="_blank">
+            <img class="donate-img" src="pictures/donate3.jpg" alt="Donate 3">
+          </a>
+        </div>
+      </div>
     </div>
-  
-    <div id="donate-tile">
-      <div class="donate-title">Donate now!</div>
-      <a href="https://example.com/donation1" target="_blank">
-        <img class="donate-img" src="pictures/donate1.jpg" alt="Donate 1">
-      </a>
-      <a href="https://example.com/donation2" target="_blank">
-        <img class="donate-img" src="pictures/donate2.jpg" alt="Donate 2">
-      </a>
-      <a href="https://example.com/donation3" target="_blank">
-        <img class="donate-img" src="pictures/donate3.jpg" alt="Donate 3">
-      </a>
-    </div>
-  </div>
   
   <div id="map"></div>
 
