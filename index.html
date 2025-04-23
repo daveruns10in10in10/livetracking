@@ -239,13 +239,6 @@
       );
     });
     
-    // Add the control to the map (bottom-right or wherever you want)
-    L.control.locate = function(opts) {
-      return new L.Control.Locate(opts);
-    }
-    
-    L.control.locate({ position: 'bottomright' }).addTo(map);
-
     // MAP LAYER ------------------------------------------------------------------------------------------------------------------------------
   
     // Add tile layer from OpenStreetMap
