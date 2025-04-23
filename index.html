@@ -81,19 +81,62 @@
     background-image: url('pictures/current_loc.jpg'); 
   }
 
-    
+  #donate-tile {
+    position: absolute;
+    top: 80px; /* adjust if needed */
+    right: 20px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+    z-index: 1000;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .donate-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .donate-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .donate-img:hover {
+    transform: scale(1.03);
+  }
+
   </style>
   
 </head>
 <body>
   <!-- Logo image -->
   <img id="logo" src="pictures/logo.jpg" alt="Logo">
-  <div id="countdown-tile">Days until 10in10in10: ...</div>
+  <div id="countdown-tile">Days until 10in10in10: ...</div> 
   <div id="locator-row">
     <span class="locator-label">Dave</span>
     <button id="goto-dave" class="locator-button"></button>
     <span class="locator-label">Me</span>
     <button id="goto-me" class="locator-button"></button>
+  </div>
+  <div id="donate-tile">
+    <div class="donate-title">Donate now!</div>
+    <a href="https://www.canadahelps.org/en/dn/123723" target="_blank">
+      <img class="donate-img" src="pictures/aafs.jpg" alt="AAFS">
+    </a>
+    <a href="https://www.canadahelps.org/en/dn/123759" target="_blank">
+      <img class="donate-img" src="pictures/bbbs.jpg" alt="BBBS">
+    </a>
+    <a href="https://www.canadahelps.org/en/dn/123657" target="_blank">
+      <img class="donate-img" src="pictures/kidsport.jpg" alt="KidSport">
+    </a>
   </div>
   <div id="map"></div>
 
