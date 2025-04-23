@@ -39,7 +39,49 @@
       font-family: sans-serif;
       z-index: 1000;
     }  
-   
+
+    #locator-row {
+    position: absolute;
+    top: 280px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+    z-index: 1000;
+  }
+  
+  .locator-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .locator-button {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    border-radius: 8px;
+  }
+  
+  /* Custom images */
+  #goto-dave {
+    background-image: url('pictures/dave.jpg'); 
+  }
+  
+  #goto-me {
+    background-image: url('pictures/current_loc.jpg'); 
+  }
+
+    
   </style>
   
 </head>
@@ -47,6 +89,12 @@
   <!-- Logo image -->
   <img id="logo" src="pictures/logo.jpg" alt="Logo">
   <div id="countdown-tile">Days until 10in10in10: ...</div>
+  <div id="locator-row">
+    <span class="locator-label">Dave</span>
+    <button id="goto-dave" class="locator-button"></button>
+    <span class="locator-label">Me</span>
+    <button id="goto-me" class="locator-button"></button>
+  </div>
   <div id="map"></div>
 
   <!-- Leaflet JS -->
@@ -93,7 +141,32 @@
     //}, 10000); // Update every 10 seconds
 
     // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
+
+    document.getElementById("goto-dave").addEventListener("click", () => {
+      map.setView([lat, lon], 14); // Dave's coordinates (already declared earlier)
+    });
     
+    document.getElementById("goto-me").addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        return;
+      }
+    
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          map.setView([latitude, longitude], 14);
+          L.marker([latitude, longitude]).addTo(map)
+            .bindPopup("You are here")
+            .openPopup();
+        },
+        () => {
+          alert("Unable to retrieve your location.");
+        }
+      );
+    });
+
+    // EXTRA ONE TO DELEEEEEEEEEEEEEEETE
     // Custom control to locate user
     L.Control.Locate = L.Control.extend({
       onAdd: function(map) {
