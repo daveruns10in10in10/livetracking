@@ -311,7 +311,7 @@
             icon: icons[marker.type] || icons.city
           }).addTo(map);
 
-          const popupOptions = { offset: [0, -40] };  // Popup will be 40px above all markers
+          const popupOptions = { offset: [0, -35] };  // Popup will be 40px above all markers
           leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
           
           //  .bindPopup(marker.text);
