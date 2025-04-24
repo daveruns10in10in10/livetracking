@@ -238,24 +238,21 @@
           <span><strong>Me</strong></span>
           <img id="me-btn" src="pictures/current_loc.jpg" alt="Go to Me" style="cursor:pointer; width: 50px; height: 50px;" />
         </div>
-      
-        <!-- Cities List -->
-        <div class="cities-list">
-          <div class="city-column">
-            <div class="city">St. John's</div>
-            <div class="city">Halifax</div>
-            <div class="city">Charlottetown</div>
-            <div class="city">Fredericton</div>
-            <div class="city">Montreal</div>
-          </div>
-          <div class="city-column">
-            <div class="city">Toronto</div>
-            <div class="city">Winnipeg</div>
-            <div class="city">Regina</div>
-            <div class="city">Vancouver</div>
-            <div class="city">Calgary</div>
-          </div>
+
+        <!-- City Buttons -->        
+        <div class="locator-buttons">
+          <button class="city-btn" data-lat="47.58221" data-lng="-52.69260">St. John's</button>
+          <button class="city-btn" data-lat="44.64861" data-lng="-63.58786">Halifax</button>
+          <button class="city-btn" data-lat="46.23343" data-lng="-63.13503">Charlottetown</button>
+          <button class="city-btn" data-lat="45.96571" data-lng="-66.65938">Fredericton</button>
+          <button class="city-btn" data-lat="45.55976" data-lng="-73.55626">Montreal</button>
+          <button class="city-btn" data-lat="43.64176" data-lng="-79.38513">Toronto</button>
+          <button class="city-btn" data-lat="49.87146" data-lng="-97.22856">Winnipeg</button>
+          <button class="city-btn" data-lat="50.42885" data-lng="-104.59787">Regina</button>
+          <button class="city-btn" data-lat="49.27673" data-lng="-123.15188">Vancouver</button>
+          <button class="city-btn" data-lat="51.03635" data-lng="-114.05496">Calgary</button>
         </div>
+      
       </div> <!-- Locator div -->
       
     </div> <!-- Sidebar title -->
@@ -263,19 +260,6 @@
   </div> <!-- Sidebar wraper -->
   
   <div id="map"></div>
-
-  <ul id="city-list">
-    <li><a href="#" data-lat="47.58221" data-lng="-52.69260">St. John's</a></li>
-    <li><a href="#" data-lat="44.64861" data-lng="-63.58786">Halifax</a></li>
-    <li><a href="#" data-lat="46.23343" data-lng="-63.13503">Charlottetown</a></li>
-    <li><a href="#" data-lat="45.96571" data-lng="-66.65938">Fredericton</a></li>
-    <li><a href="#" data-lat="45.55976" data-lng="-73.55626">Montreal</a></li>
-    <li><a href="#" data-lat="43.64176" data-lng="-79.38513">Toronto</a></li>
-    <li><a href="#" data-lat="49.87146" data-lng="-97.22856">Winnipeg</a></li>
-    <li><a href="#" data-lat="50.42885" data-lng="-104.59787">Regina</a></li>
-    <li><a href="#" data-lat="49.27673" data-lng="-123.15188">Vancouver</a></li>
-    <li><a href="#" data-lat="51.03635" data-lng="-114.05496">Calgary</a></li>
-  </ul>
   
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -347,9 +331,8 @@
     });
 
     // JUMP TO CITY LOCATIONS FROM SIDEBAR
-    document.querySelectorAll('#city-list a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
+    document.querySelectorAll('.city-btn').forEach(button => {
+      button.addEventListener('click', function () {
         const lat = parseFloat(this.getAttribute('data-lat'));
         const lng = parseFloat(this.getAttribute('data-lng'));
         map.setView([lat, lng], 10); // Adjust zoom as needed
