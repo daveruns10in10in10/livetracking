@@ -127,6 +127,29 @@
       transform: scale(1.03);
     }
 
+    .donation-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+    
+    .donation-text {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .donation-icon {
+      height: 36px;
+      border-radius: 6px;
+      margin-left: 12px;
+      transition: transform 0.2s ease;
+    }
+    
+    .donation-icon:hover {
+      transform: scale(1.05);
+    }
+    
   </style>
 </head>
 
@@ -155,15 +178,27 @@
       <!-- Donate -->
       <div id="donate-tile">
         <div class="donate-title">Donate now!</div>
-        <a href="https://www.canadahelps.org/en/dn/123723" target="_blank">
-          <img class="donate-img" src="pictures/aafs2.jpg" alt="AAFS">
-        </a>
-        <a href="https://www.canadahelps.org/en/dn/123759" target="_blank">
-          <img class="donate-img" src="pictures/bbbs.jpg" alt="BBBS">
-        </a>
-        <a href="https://www.canadahelps.org/en/dn/123657" target="_blank">
-          <img class="donate-img" src="pictures/kidsport.jpg" alt="KidSport">
-        </a>
+        
+        <div class="donation-row">
+          <div class="donation-text">AAFS</div>
+          <a href="https://www.canadahelps.org/en/dn/123723" target="_blank">
+            <img class="donation-icon" src="pictures/aafs2.jpg" alt="AAFS">
+          </a>
+        </div>
+      
+        <div class="donation-row">
+          <div class="donation-text">BBBS</div>
+          <a href="https://www.canadahelps.org/en/dn/123759" target="_blank">
+            <img class="donation-icon" src="pictures/bbbs.jpg" alt="BBBS">
+          </a>
+        </div>
+      
+        <div class="donation-row">
+          <div class="donation-text">KidSport</div>
+          <a href="https://www.canadahelps.org/en/dn/123657" target="_blank">
+            <img class="donation-icon" src="pictures/kidsport.jpg" alt="KidSport">
+          </a>
+        </div>
       </div>
 
       <!-- Marker Legend -->
