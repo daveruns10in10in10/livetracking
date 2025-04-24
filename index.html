@@ -303,7 +303,7 @@
       hotel: L.icon({ iconUrl: 'icons/yellow.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
     };
     
-    fetch('markers.json')
+    fetch('markers/markers.json')
       .then(res => res.json())
       .then(data => {
         data.forEach(marker => {
