@@ -296,11 +296,11 @@
 
     // WITH ICONS THIS TIME ???
     const icons = {
-      city: L.icon({ iconUrl: 'icons/black.png', iconSize: [60, 60], iconAnchor: [30, 60] }),
-      distance: L.icon({ iconUrl: 'icons/green.png', iconSize: [30, 30], iconAnchor: [15, 30] }),
-      aid: L.icon({ iconUrl: 'icons/red.png', iconSize: [30, 30], iconAnchor: [15, 30] }),
-      bathroom: L.icon({ iconUrl: 'icons/blue.png', iconSize: [30, 30], iconAnchor: [15, 30] }),
-      hotel: L.icon({ iconUrl: 'icons/yellow.png', iconSize: [30, 30], iconAnchor: [15, 30] }),
+      city: L.icon({ iconUrl: 'icons/black.png', iconSize: [44, 44], iconAnchor: [22, 44] }),
+      distance: L.icon({ iconUrl: 'icons/green.png', iconSize: [44, 44], iconAnchor: [22, 44]}),
+      aid: L.icon({ iconUrl: 'icons/red.png', iconSize: [44, 44], iconAnchor: [22, 44] }),
+      bathroom: L.icon({ iconUrl: 'icons/blue.png', iconSize: [44, 44], iconAnchor: [22, 44] }),
+      hotel: L.icon({ iconUrl: 'icons/yellow.png', iconSize: [44, 44], iconAnchor: [22, 44] }),
     };
     
     fetch('markers/markers.json')
@@ -310,7 +310,14 @@
           L.marker([marker.lat, marker.lon], {
             icon: icons[marker.type] || icons.city // default to city if type is missing
           }).addTo(map)
-            .bindPopup(marker.text);
+
+          const popupOptions = { offset: [0, -40] };  // Popup will be 40px above all markers
+          // Bind the popup to the marker with the adjusted offset
+          leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
+          
+          //  .bindPopup(marker.text);
+          
+          
           // Adjust the popup position
           //if (marker.type === 'city') {
           //  marker.getPopup().options.offset = [0, -60]; // Move city popups 60px higher
