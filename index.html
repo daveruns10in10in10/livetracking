@@ -307,15 +307,14 @@
       .then(res => res.json())
       .then(data => {
         data.forEach(marker => {
-          L.marker([marker.lat, marker.lon], {
-            icon: icons[marker.type] || icons.city // default to city if type is missing
-          }).addTo(map)
+          const leafletMarker = L.marker([marker.lat, marker.lon], {
+            icon: icons[marker.type] || icons.city
+          }).addTo(map);
 
-          //const popupOptions = { offset: [0, -40] };  // Popup will be 40px above all markers
-          // Bind the popup to the marker with the adjusted offset
-          //leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
+          const popupOptions = { offset: [0, -40] };  // Popup will be 40px above all markers
+          leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
           
-            .bindPopup(marker.text);
+          //  .bindPopup(marker.text);
           
           
           // Adjust the popup position
