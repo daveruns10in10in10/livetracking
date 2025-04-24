@@ -349,9 +349,7 @@
             zIndexOffset: zIndex
           }).addTo(map);
     
-          const popupOptions = {
-            offset: [0, -50]
-          };
+          const popupOptions = {offset: [0, -35]};
     
           leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
         });
