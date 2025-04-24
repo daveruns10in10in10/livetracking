@@ -311,6 +311,8 @@
             icon: icons[marker.type] || icons.city // default to city if type is missing
           }).addTo(map)
             .bindPopup(marker.text);
+          // Adjust the popup position
+          mapMarker.getPopup().options.offset = [0, -30]; // Moves the popup 20px higher
         });
       });
 
