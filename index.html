@@ -123,7 +123,6 @@
       margin-bottom: 5px;  /* Space between city names */
     }
 
-    
     #donate-tile {
       background-color: white;
       padding: 10px 15px;
@@ -265,6 +264,19 @@
   
   <div id="map"></div>
 
+  <ul id="city-list">
+    <li><a href="#" data-lat="47.58221" data-lng="-52.69260">St. John's</a></li>
+    <li><a href="#" data-lat="44.64861" data-lng="-63.58786">Halifax</a></li>
+    <li><a href="#" data-lat="46.23343" data-lng="-63.13503">Charlottetown</a></li>
+    <li><a href="#" data-lat="45.96571" data-lng="-66.65938">Fredericton</a></li>
+    <li><a href="#" data-lat="45.55976" data-lng="-73.55626">Montreal</a></li>
+    <li><a href="#" data-lat="43.64176" data-lng="-79.38513">Toronto</a></li>
+    <li><a href="#" data-lat="49.87146" data-lng="-97.22856">Winnipeg</a></li>
+    <li><a href="#" data-lat="50.42885" data-lng="-104.59787">Regina</a></li>
+    <li><a href="#" data-lat="49.27673" data-lng="-123.15188">Vancouver</a></li>
+    <li><a href="#" data-lat="51.03635" data-lng="-114.05496">Calgary</a></li>
+  </ul>
+  
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   
@@ -332,6 +344,16 @@
           alert("Unable to retrieve your location.");
         }
       );
+    });
+
+    // JUMP TO CITY LOCATIONS FROM SIDEBAR
+    document.querySelectorAll('#city-list a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const lat = parseFloat(this.getAttribute('data-lat'));
+        const lng = parseFloat(this.getAttribute('data-lng'));
+        map.setView([lat, lng], 10); // Adjust zoom as needed
+      });
     });
     
     // MAP LAYER ------------------------------------------------------------------------------------------------------------------------------
@@ -401,18 +423,7 @@
           leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
         });
       });
-    
-    // Load markers from file
-    // fetch("markers/markers.json")
-//       .then(res => res.json())
-      // .then(data => {
-        // data.forEach(marker => {
-          // L.marker([marker.lat, marker.lon])
-            // .addTo(map)
-            // .bindPopup(marker.text,{ autoClose: false, closeOnClick: false });
-        // });
-      // });
-    
+       
   // SIDEBAR CONTROL
     document.getElementById("toggle-sidebar").addEventListener("click", function () {
     const sidebar = document.getElementById("sidebar");
