@@ -87,6 +87,14 @@
       text-align: center;
       flex-wrap: wrap;
     }
+
+    .locator-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+      text-align: center;
+      width: 100%;
+    }
     
     .locate-button {
       background-image: url('pictures/current_loc.jpg');
@@ -204,13 +212,18 @@
       </div>
 
       <!-- Locator -->
-      <div id="locator-controls">
-        <span><strong>Dave</strong></span>
-        <button id="dave-btn" class="locate-button"></button>
 
-        <span><strong>Me</strong></span>
-        <button id="me-btn" class="locate-button"></button>
+      <div id="locator-controls">
+        <div class="locator-title">Jump map to:</div>
+        <div class="locator-buttons">
+          <span>Dave</span>
+          <button id="dave-btn" class="locate-button"></button>
+      
+          <span>Me</span>
+          <button id="me-btn" class="locate-button"></button>
+        </div>
       </div>
+
       
     </div>
   </div>
