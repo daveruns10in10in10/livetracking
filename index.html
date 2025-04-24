@@ -312,7 +312,11 @@
           }).addTo(map)
             .bindPopup(marker.text);
           // Adjust the popup position
-          mapMarker.getPopup().options.offset = [0, -30]; // Moves the popup 20px higher
+          if (marker.type === 'city') {
+            mapMarker.getPopup().options.offset = [0, -60]; // Move city popups 60px higher
+          } else {
+            mapMarker.getPopup().options.offset = [0, -30]; // Move other markers 30px higher
+          }
         });
       });
 
