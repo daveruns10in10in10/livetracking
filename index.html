@@ -307,25 +307,22 @@
       .then(res => res.json())
       .then(data => {
         data.forEach(marker => {
+          const isCity = marker.type === 'city';
+          const zIndex = isCity ? 1000 : 0;
+    
           const leafletMarker = L.marker([marker.lat, marker.lon], {
-            icon: icons[marker.type] || icons.city
+            icon: icons[marker.type] || icons.city,
+            zIndexOffset: zIndex
           }).addTo(map);
-
-          const popupOptions = { offset: [0, -35] };  // Popup will be 40px above all markers
+    
+          const popupOptions = {
+            offset: [0, -50]
+          };
+    
           leafletMarker.bindPopup(L.popup(popupOptions).setContent(marker.text));
-          
-          //  .bindPopup(marker.text);
-          
-          
-          // Adjust the popup position
-          //if (marker.type === 'city') {
-          //  marker.getPopup().options.offset = [0, -60]; // Move city popups 60px higher
-          //} else {
-          //  marker.getPopup().options.offset = [0, -30]; // Move other markers 30px higher
-         // }
         });
       });
-
+    
     // Load markers from file
     // fetch("markers/markers.json")
 //       .then(res => res.json())
