@@ -116,6 +116,23 @@
       flex-direction: row;
       align-items: center;      /* Centers the text and button vertically */
     }
+
+    .cities-list {
+      display: flex;
+      justify-content: center;
+      gap: 40px;  /* Space between columns */
+    }
+    
+    .city-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .city {
+      font-size: 16px;
+      margin-bottom: 5px;  /* Space between city names */
+    }
     
     #donate-tile {
       background-color: white;
@@ -234,6 +251,25 @@
           </div>
         </div>
       </div>
+
+      <!-- Cities List -->
+      <div class="cities-list">
+        <div class="city-column">
+          <div class="city">St. John's</div>
+          <div class="city">Halifax</div>
+          <div class="city">Charlottetown</div>
+          <div class="city">Fredericton</div>
+          <div class="city">Montreal</div>
+        </div>
+        <div class="city-column">
+          <div class="city">Toronto</div>
+          <div class="city">Winnipeg</div>
+          <div class="city">Regina</div>
+          <div class="city">Vancouver</div>
+          <div class="city">Calgary</div>
+        </div>
+      </div>
+    </div>
       
     </div>
   </div>
