@@ -294,16 +294,36 @@
     //  .bindPopup("<strong>Day 1</strong>: Friday, May 16th<br><strong>City</strong>: St. John's, Newfoundland<br><strong>Start:</strong> North side of Quidi Vidi")
     //  .openPopup();
 
-    // Load markers from file
-    fetch("markers/markers.json")
+    // WITH ICONS THIS TIME ???
+    const icons = {
+      city: L.icon({ iconUrl: 'icons/black.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
+      distance: L.icon({ iconUrl: 'icons/green.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
+      aid: L.icon({ iconUrl: 'icons/red.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
+      bathroom: L.icon({ iconUrl: 'icons/blue.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
+      hotel: L.icon({ iconUrl: 'icons/yellow.png', iconSize: [25, 41], iconAnchor: [12, 41] }),
+    };
+    
+    fetch('markers.json')
       .then(res => res.json())
       .then(data => {
         data.forEach(marker => {
-          L.marker([marker.lat, marker.lon])
-            .addTo(map)
-            .bindPopup(marker.text,{ autoClose: false, closeOnClick: false });
+          L.marker([marker.lat, marker.lon], {
+            icon: icons[marker.type] || icons.city // default to city if type is missing
+          }).addTo(map)
+            .bindPopup(marker.text);
         });
       });
+
+    // Load markers from file
+    // fetch("markers/markers.json")
+//       .then(res => res.json())
+      // .then(data => {
+        // data.forEach(marker => {
+          // L.marker([marker.lat, marker.lon])
+            // .addTo(map)
+            // .bindPopup(marker.text,{ autoClose: false, closeOnClick: false });
+        // });
+      // });
     
   // SIDEBAR CONTROL
     document.getElementById("toggle-sidebar").addEventListener("click", function () {
