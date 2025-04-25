@@ -324,7 +324,9 @@
 
     var lat = 51.0447; // Calgary
     var lon = -114.0719; // Calgary
-    var map = L.map('map').setView([lat, lon], 14);
+    var map = L.map('map',{
+      zoomControl: false // disable default zoom control
+    }).setView([lat, lon], 14);
 
    // Add live marker
     var livemarker = L.marker([lat, lon]).addTo(map)
