@@ -61,47 +61,6 @@
       pointer-events: none;
     }
     
-   /* #sidebar-wrapper {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      z-index: 1000;
-    }
-    
-    #toggle-sidebar {
-      background-color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
-      font-size: 20px;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-    
-    #sidebar {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-      overflow: hidden;
-      max-height: 1000px;
-      opacity: 1;
-    }
-    
-    #sidebar.collapsed {
-      max-height: 0;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #sidebar-tile {
-      width: 250px;
-      font-family: sans-serif;
-    }
-    
-    */
-    
     #logo {
       width: 100%;
       height: auto;
@@ -237,7 +196,7 @@
     
 <!-- Left Sidebar -->
 <div id="left-sidebar-wrapper">
-  <button id="toggle-sidebar">☰</button>
+  <button id="toggle-left-sidebar">☰</button>
   <div id="left-sidebar" class="expanded">
     <!-- Locator Controls -->
     <div id="locator-controls">
@@ -276,7 +235,7 @@
 
 <!-- Right Sidebar -->
 <div id="right-sidebar-wrapper">
-  <button id="toggle-sidebar">☰</button>
+  <button id="toggle-right-sidebar">☰</button>
   <div id="right-sidebar" class="expanded">
     <div id="sidebar-tile">
       <!-- Logo -->
@@ -476,13 +435,13 @@
       });
        
   // LEFT SIDEBAR CONTROL
-  document.getElementById("toggle-sidebar").addEventListener("click", function () {
+  document.getElementById("toggle-left-sidebar").addEventListener("click", function () {
     const leftSidebar = document.getElementById("left-sidebar");
     leftSidebar.classList.toggle("collapsed-left");
   });
   
   // RIGHT SIDEBAR CONTROL
-  document.getElementById("toggle-sidebar").addEventListener("click", function () {
+  document.getElementById("toggle-right-sidebar").addEventListener("click", function () {
     const rightSidebar = document.getElementById("right-sidebar");
     rightSidebar.classList.toggle("collapsed-right");
   });  
