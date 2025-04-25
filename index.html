@@ -36,6 +36,14 @@
       align-items: flex-start;
       gap: 10px;
     }
+        
+    /* Add styles for collapsed left sidebar */
+    #left-sidebar.collapsed-left {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
     
     /* Right Sidebar */
     #right-sidebar-wrapper {
@@ -54,11 +62,13 @@
       max-height: 1000px;
       opacity: 1;
     }
-    
-    #right-sidebar.collapsed {
+
+    /* Add styles for collapsed right sidebar */
+    #right-sidebar.collapsed-right {
       max-height: 0;
       opacity: 0;
       pointer-events: none;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
     }
     
     #logo {
