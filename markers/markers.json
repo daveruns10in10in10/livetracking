@@ -30,7 +30,6 @@
 {"lat":45.5079675133557,"lon":-73.5343200200386,"text":"<strong>Complete</strong>: 21k<br><strong>Remaining</strong>: 21k<br><strong>ETA</strong>: 09:15","type":"distance"},
 {"lat":45.52219,"lon":-73.54934,"text":"<strong>Complete</strong>: 32k<br><strong>Remaining</strong>: 10k<br><strong>ETA</strong>: 10:25","type":"distance"},
 {"lat":45.55854,"lon":-73.53629,"text":"<strong>Complete</strong>: 37k<br><strong>Remaining</strong>: 5k<br><strong>ETA</strong>: 10:57","type":"distance"},
-{"lat":,"lon":,"text":"<strong>Hotel</strong>: ","type":"hotel"},
 {"lat":45.497536,"lon":-73.57095,"text":"<strong>Aid</strong>: McKinsey office","type":"aid"},
 {"lat":45.52546,"lon":-73.552497,"text":"<strong>Bathroom</strong>: Petro-Canada","type":"bathroom"},
 {"lat":45.491883,"lon":-73.560887,"text":"<strong>Bathroom</strong>: Bodega Montreal","type":"bathroom"},
