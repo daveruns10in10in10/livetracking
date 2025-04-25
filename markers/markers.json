@@ -6,6 +6,8 @@
 {"lat":47.569952,"lon":-52.700521,"text":"<strong>Hotel</strong>: DoubleTree by Hilton","type":"hotel"},
 {"lat":47.559932,"lon":-52.710577,"text":"<strong>Aid</strong>: Cenovus office","type":"aid"},
 {"lat":47.550217,"lon":-52.718961,"text":"<strong>Bathroom</strong>: Tim Hortons","type":"bathroom"},
+{"lat":47.5823398549935,"lon":-52.6925903501914,"text":"<strong>Bathroom</strong>: Public washrooms","type":"bathroom"},
+{"lat":47.5273955710027,"lon":-52.7467103512995,"text":"<strong>Bathroom</strong>: Public washrooms","type":"bathroom"},
 {"lat":44.64861,"lon":-63.58786,"text":"<strong>Day 2</strong>: Saturday, May 17<br><strong>City</strong>: Halifax, Nova Scotia<br><strong>Start:</strong> Blue Nose Expo<br><strong>Distances:</strong> 0k / 42k<br><strong>ETA: </strong>7:00 / 11:30","type":"city"},
 {"lat":44.6712100001114,"lon":-63.5641149989978,"text":"<strong>Complete</strong>: 5k<br><strong>Remaining</strong>: 37k<br><strong>ETA</strong>: 07:32","type":"distance"},
 {"lat":44.6735950011793,"lon":-63.5623999971728,"text":"<strong>Complete</strong>: 10k<br><strong>Remaining</strong>: 32k<br><strong>ETA</strong>: 08:04","type":"distance"},
