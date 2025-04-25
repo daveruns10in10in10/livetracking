@@ -455,6 +455,11 @@
     const rightSidebar = document.getElementById("right-sidebar");
     rightSidebar.classList.toggle("collapsed-right");
   });  
+
+  // Move the zoom to the bottom right
+  L.control.zoom({
+    position: 'bottomright'  // Options: 'topleft', 'topright', 'bottomleft', 'bottomright'
+  }).addTo(map);
     
   </script>
 </body>
