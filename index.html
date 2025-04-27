@@ -371,7 +371,11 @@
     // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
 
     document.getElementById("dave-btn").addEventListener("click", () => {
-      map.setView([lat, lon], 14); // Dave's coordinates (already declared earlier)
+      if (livemarker) {
+        map.setView(livemarker.getLatLng(), 14); // Center on Dave's live location
+      } else {
+        console.log("Live marker not available yet.");
+      }
     });
     
     document.getElementById("me-btn").addEventListener("click", () => {
