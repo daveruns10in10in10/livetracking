@@ -325,32 +325,49 @@
     
     // live marker -> to pull from the server and the live location
 
-    var lat = 51.0447; // Calgary
-    var lon = -114.0719; // Calgary
-    var map = L.map('map',{
-      zoomControl: false // disable default zoom control
-    }).setView([lat, lon], 14);
-
-   // Add live marker
-    var livemarker = L.marker([lat, lon]).addTo(map)
-      .bindPopup("<strong>Dave's live location</strong><br><em>(Static until May 16th)</em>")
-      .openPopup();
+    // SET THE INITIAL VIEW FOR THE MAP (Currently Calgary)
+    var map = L.map('map', {
+      zoomControl: false
+    }).setView([51.0447, -114.0719], 14);
+  
+  
     
-    setInterval(() => {
-     fetch("https://5maw3nstpi.execute-api.ca-central-1.amazonaws.com/prod/location", {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
+   // Add live marker
+    var livemarker; // Declare but don't create the marker yet
+    
+    function updateLocation() {
+      fetch("https://5maw3nstpi.execute-api.ca-central-1.amazonaws.com/prod/location", {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
           'Content-Type': 'application/json',
-        },
+        }
       })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        livemarker.setLatLng([data.lat, data.lon]);
+  
+        if (!livemarker) {
+          // If the live marker doesn't exist yet, create it
+          livemarker = L.marker([data.lat, data.lon]).addTo(map)
+            .bindPopup("<strong>Dave's live location</strong><br><em>(Static until May 16th)</em>")
+            .openPopup();
+        } else {
+          // Otherwise, just update the marker's position
+          livemarker.setLatLng([data.lat, data.lon]);
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching live location:', err);
       });
-    }, 10000); // Update every 10 seconds
-
+    }
+  
+    // Update location every 5 seconds
+    setInterval(updateLocation, 5000);
+  
+    // Fetch once immediately to create the marker
+    updateLocation();
+    
     // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
 
     document.getElementById("dave-btn").addEventListener("click", () => {
