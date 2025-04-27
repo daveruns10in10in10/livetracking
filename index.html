@@ -337,8 +337,14 @@
       .openPopup();
 
     // Optional: refresh location every X seconds (if needed)
+    const corsProxy = "https://cors-anywhere.herokuapp.com/"; // CORS proxy URL
+    const apiUrl = "https://5maw3nstpi.execute-api.ca-central-1.amazonaws.com/prod/location"; // API URL
+    
+    // Full URL using the CORS proxy
+    const url = corsProxy + apiUrl;
+    
     setInterval(() => {
-     fetch("https://5maw3nstpi.execute-api.ca-central-1.amazonaws.com/prod/location", {
+     fetch(url, {
       method: 'GET',
       mode: 'cors',
       headers: {
