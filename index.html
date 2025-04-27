@@ -308,7 +308,7 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
 
   <script>
-
+    
     // COUNTDOWN ----------------------------------------------------------------------------------------------------------------------------
 
     function updateCountdown() {
@@ -461,6 +461,20 @@
     rightSidebar.classList.toggle("collapsed-right");
   });  
 
+  // AUTO-COLLAPSE SIDEBARS ON MOBILE
+  window.addEventListener("load", function () {
+    if (window.innerWidth < 768) {
+      const leftSidebar = document.getElementById("left-sidebar");
+      if (leftSidebar) {
+        leftSidebar.classList.add("collapsed-left");
+      }
+      const rightSidebar = document.getElementById("right-sidebar");
+      if (rightSidebar) {
+        rightSidebar.classList.add("collapsed-right");
+      }
+    }
+  });
+    
   // Move the zoom to the bottom right
   L.control.zoom({
     position: 'bottomright'  // Options: 'topleft', 'topright', 'bottomleft', 'bottomright'
