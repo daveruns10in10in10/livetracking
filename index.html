@@ -371,6 +371,7 @@
     document.getElementById("dave-btn").addEventListener("click", () => {
       if (livemarker) {
         map.setView(livemarker.getLatLng(), 14); // Center on Dave's live location
+        livemarker.openPopup(); // <-- This opens the popup automatically
       } else {
         console.log("Live marker not available yet.");
       }
