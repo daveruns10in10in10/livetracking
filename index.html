@@ -347,6 +347,7 @@
       })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         livemarker.setLatLng([data.lat, data.lon]);
       });
     }, 10000); // Update every 10 seconds
