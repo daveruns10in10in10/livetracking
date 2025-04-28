@@ -425,6 +425,17 @@
   
     // Fetch once immediately to create the marker
     updateLocation();
+
+    // CLOSE LEFT SIDEBAR WHEN BUTTON IS CLICKED
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+    
+    function closeLeftSidebarOnMobile() {
+      if (isMobile()) {
+        document.getElementById('left-sidebar').classList.add('collapsed-left');
+      }
+    }
     
     // CURRENT LOCATION ----------------------------------------------------------------------------------------------------------------------------
 
@@ -435,6 +446,7 @@
       } else {
         console.log("Live marker not available yet.");
       }
+      closeLeftSidebarOnMobile();
     });
     
     document.getElementById("me-btn").addEventListener("click", () => {
@@ -455,6 +467,7 @@
           alert("Unable to retrieve your location.");
         }
       );
+      closeLeftSidebarOnMobile();
     });
 
     // JUMP TO CITY LOCATIONS FROM SIDEBAR
@@ -463,6 +476,7 @@
         const lat = parseFloat(this.getAttribute('data-lat'));
         const lng = parseFloat(this.getAttribute('data-lng'));
         map.setView([lat, lng], 13); // Adjust zoom as needed
+        closeLeftSidebarOnMobile();
       });
     });
     
