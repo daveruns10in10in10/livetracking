@@ -364,10 +364,9 @@
   
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script> <!-- GPX Plug-in -->
+  <script src="https://unpkg.com/leaflet-polylinedecorator@1.7.0/dist/leaflet.polylineDecorator.min.js"></script> <!-- directional arrows -->
   
-  <!-- Leaflet GPX plugin JS -->
-  <script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
-
   <script>
     
     // COUNTDOWN ----------------------------------------------------------------------------------------------------------------------------
@@ -508,6 +507,25 @@
             // Do nothing to the map view!
             // Just confirm it's loaded if needed (for debugging)
             console.log(`Loaded ${gpxPath}`);
+                  // === ADD THIS: Arrows along the GPX track ===
+                  const decorator = L.polylineDecorator(gpx, {
+                    patterns: [
+                      {
+                        offset: 0, // start immediately
+                        repeat: '3000m', // one arrow every 3km
+                        symbol: L.Symbol.arrowHead({
+                          pixelSize: 12, // arrow size
+                          polygon: false,
+                          pathOptions: {
+                            stroke: true,
+                            color: 'blue',
+                            weight: 2
+                          }
+                        })
+                      }
+                    ]
+                  });
+                  decorator.addTo(map);
           });
     
           gpx.addTo(map); // Make sure this is outside the .on('loaded') handler
