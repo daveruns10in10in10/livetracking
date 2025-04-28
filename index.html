@@ -44,6 +44,18 @@
     }
     
     /* Right Sidebar */
+    #right-sidebar-container {
+      position: relative;
+    }
+    
+    #toggle-right-sidebar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      z-index: 1001; /* A bit higher than the sidebar itself */
+    }
+    
     #right-sidebar-wrapper {
       position: fixed;
       top: 20px;
@@ -58,6 +70,7 @@
       transition: max-height 0.3s ease, opacity 0.3s ease;
       overflow: hidden;
       max-height: 1000px;
+      margin-top: 50px; /* push the sidebar down so it's not under the button */
       opacity: 1;
     }
 
@@ -301,47 +314,49 @@
   
 <!-- Right Sidebar -->
 <div id="right-sidebar-wrapper">
-  <button id="toggle-right-sidebar">
-    <i class="fas fa-info-circle"></i>
-    <span class="right-sidebar-text">Map Information</span>
-  </button>
-  <div id="right-sidebar" class="expanded">
-    <div id="sidebar-tile">
-      <!-- Logo -->
-      <a href="https://www.10in10in10.ca" target="_blank" rel="noopener noreferrer">
-        <img id="logo" src="pictures/logo.jpg" alt="Logo">
-      </a>
-      <!-- Countdown -->
-      <div id="countdown-tile">Days until 10in10in10: ...</div>
-
-      <!-- Donate -->
-      <div id="donate-tile">
-        <div class="donate-title">Donate now!</div>
-         <!-- Hyperlinked Images in a Row -->
-          <div style="display: flex; justify-content: space-between; gap: 10px;">
-            <a href="https://www.canadahelps.org/en/dn/123723" target="_blank">
-              <img class="donate-img" src="pictures/aafs2.jpg" alt="AAFS">
-            </a>
-            <a href="https://www.canadahelps.org/en/dn/123759" target="_blank">
-              <img class="donate-img" src="pictures/bbbs.jpg" alt="BBBS">
-            </a>
-            <a href="https://www.canadahelps.org/en/dn/123657" target="_blank">
-              <img class="donate-img" src="pictures/kidsport.jpg" alt="KidSport">
-            </a>
-          </div>
+  <div id="right-sidebar-container">
+    <button id="toggle-right-sidebar">
+      <i class="fas fa-info-circle"></i>
+      <span class="right-sidebar-text">Map Information</span>
+    </button>
+    <div id="right-sidebar" class="expanded">
+      <div id="sidebar-tile">
+        <!-- Logo -->
+        <a href="https://www.10in10in10.ca" target="_blank" rel="noopener noreferrer">
+          <img id="logo" src="pictures/logo.jpg" alt="Logo">
+        </a>
+        <!-- Countdown -->
+        <div id="countdown-tile">Days until 10in10in10: ...</div>
+  
+        <!-- Donate -->
+        <div id="donate-tile">
+          <div class="donate-title">Donate now!</div>
+           <!-- Hyperlinked Images in a Row -->
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+              <a href="https://www.canadahelps.org/en/dn/123723" target="_blank">
+                <img class="donate-img" src="pictures/aafs2.jpg" alt="AAFS">
+              </a>
+              <a href="https://www.canadahelps.org/en/dn/123759" target="_blank">
+                <img class="donate-img" src="pictures/bbbs.jpg" alt="BBBS">
+              </a>
+              <a href="https://www.canadahelps.org/en/dn/123657" target="_blank">
+                <img class="donate-img" src="pictures/kidsport.jpg" alt="KidSport">
+              </a>
+            </div>
+        </div>
+  
+        <!-- Marker Legend -->
+        <div id="marker-legend" style="background: white; padding: 10px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.3); font-family: sans-serif; font-size: 18px; margin-top: 10px;">
+           <div class="donate-title">Legend</div>
+           <ul style="list-style: none; padding-left: 0; margin: 0;">
+             <li><span style="display:inline-block; width: 14px; height: 14px; background: black; margin-right: 8px; border-radius: 50%;"></span> Marathon start/finish</li>
+             <li><span style="display:inline-block; width: 14px; height: 14px; background: green; margin-right: 8px; border-radius: 50%;"></span> Distance milestones</li>
+             <li><span style="display:inline-block; width: 14px; height: 14px; background: red; margin-right: 8px; border-radius: 50%;"></span> Aid stations</li>
+             <li><span style="display:inline-block; width: 14px; height: 14px; background: blue; margin-right: 8px; border-radius: 50%;"></span> Bathrooms</li>
+             <li><span style="display:inline-block; width: 14px; height: 14px; background: orange; margin-right: 8px; border-radius: 50%;"></span> Hotels</li>
+           </ul>
+         </div>
       </div>
-
-      <!-- Marker Legend -->
-      <div id="marker-legend" style="background: white; padding: 10px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.3); font-family: sans-serif; font-size: 18px; margin-top: 10px;">
-         <div class="donate-title">Legend</div>
-         <ul style="list-style: none; padding-left: 0; margin: 0;">
-           <li><span style="display:inline-block; width: 14px; height: 14px; background: black; margin-right: 8px; border-radius: 50%;"></span> Marathon start/finish</li>
-           <li><span style="display:inline-block; width: 14px; height: 14px; background: green; margin-right: 8px; border-radius: 50%;"></span> Distance milestones</li>
-           <li><span style="display:inline-block; width: 14px; height: 14px; background: red; margin-right: 8px; border-radius: 50%;"></span> Aid stations</li>
-           <li><span style="display:inline-block; width: 14px; height: 14px; background: blue; margin-right: 8px; border-radius: 50%;"></span> Bathrooms</li>
-           <li><span style="display:inline-block; width: 14px; height: 14px; background: orange; margin-right: 8px; border-radius: 50%;"></span> Hotels</li>
-         </ul>
-       </div>
     </div>
   </div>
 </div>
