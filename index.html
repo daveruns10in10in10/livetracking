@@ -204,10 +204,52 @@
       transform: scale(1.05);
     }
 
+    /* Hide text by default (desktop) */
+    #toggle-left-sidebar .left-sidebar-text {
+      display: none;
+    }
+    
+    #toggle-right-sidebar .right-sidebar-text {
+      display: none;
+    }
+    
     /* Hide zoom controls on mobile */
     @media only screen and (max-width: 768px) {
       .leaflet-control-zoom {
         display: none !important;
+      }
+    }
+
+    /* On mobile, show text and add background */
+    @media (max-width: 768px) {
+      #toggle-right-sidebar {
+        background-color: #f0f0f0; /* Light background */
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Space between icon and text */
+      }
+    
+      #toggle-right-sidebar .right-sidebar-text {
+        display: inline;
+        font-size: 16px;
+        color: #333;
+      }
+
+      #toggle-left-sidebar {
+        background-color: #f0f0f0; /* Light background */
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Space between icon and text */
+      }
+    
+      #toggle-left-sidebar .left-sidebar-text {
+        display: inline;
+        font-size: 16px;
+        color: #333;
       }
     }
     
