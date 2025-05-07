@@ -584,42 +584,47 @@
   // ------------------------------------------------------------------------------------------  
   // UPDATE STATISTICS
 
-    async function updateProgress() {
-      try {
-        const response = await fetch('progress.json');
-        const data = await response.json();
-  
-        const now = new Date();
-  
-        let latestTime = null;
-        let latestKm = 0;
-  
-        for (const timestamp in data) {
-          const entryTime = new Date(timestamp + "Z"); // ensure it's treated as UTC
-          if (entryTime <= now) {
-            if (!latestTime || entryTime > new Date(latestTime + "Z")) {
-              latestTime = timestamp;
-              latestKm = data[timestamp];
-            }
+   async function updateProgress() {
+    try {
+      const response = await fetch('progress.json');
+      const data = await response.json();
+
+      const now = new Date();
+
+      let latestTime = null;
+      let latestKm = 0;
+
+      for (const timestamp in data) {
+        const entryTime = new Date(timestamp + "Z"); // Parse as UTC
+        if (entryTime <= now) {
+          if (!latestTime || entryTime > new Date(latestTime + "Z")) {
+            latestTime = timestamp;
+            latestKm = data[timestamp];
           }
         }
-  
-        if (latestTime) {
-          const totalKm = 422;
-          const currentDay = Math.min(10, Math.floor(latestKm / 42.2) + 1); // cap at 10
-          const percent = ((latestKm / totalKm) * 100).toFixed(1);
-  
-          document.getElementById('day-counter').textContent = `Current day: ${currentDay} / 10`;
-          document.getElementById('km-counter').textContent = `Kms run: ${latestKm.toFixed(1)} / 422km (${percent}%)`;
-        } else {
-          console.warn('No valid entries found in progress.json');
-        }
-      } catch (error) {
-        console.error('Error loading progress.json:', error);
       }
+
+      if (latestTime) {
+        const totalKm = 422;
+        const percent = ((latestKm / totalKm) * 100).toFixed(1);
+
+        // Calculate day since May 16, 2025 (Day 1)
+        const startDate = new Date(Date.UTC(2025, 4, 16)); // Months are 0-indexed (May = 4)
+        const msPerDay = 1000 * 60 * 60 * 24;
+        const dayOffset = Math.floor((now - startDate) / msPerDay) + 1;
+        const currentDay = Math.min(10, Math.max(1, dayOffset)); // Clamp between 1 and 10
+
+        document.getElementById('progress-day').textContent = `Current day: ${currentDay} / 10`;
+        document.getElementById('progress-km').textContent = `Kms run: ${latestKm.toFixed(1)} / 422km (${percent}%)`;
+      } else {
+        console.warn('No valid entries found in progress.json');
+      }
+    } catch (error) {
+      console.error('Error loading progress.json:', error);
     }
-  
-    updateProgress();
+  }
+
+  updateProgress();
     
   </script>
 </body>
