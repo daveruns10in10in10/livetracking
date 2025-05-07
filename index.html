@@ -584,29 +584,42 @@
   // ------------------------------------------------------------------------------------------  
   // UPDATE STATISTICS
 
-  // Define event start and current time in EST
-  const eventStart = new Date("2025-05-11T00:00:00-04:00"); // May 11, 2025 at 00:00 EST
-  const now = new Date();
-
-  // Convert to EST
-  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const estNow = new Date(utc - (4 * 60 * 60 * 1000)); // EST = UTC - 4 hours
-
-  // Calculate days since start
-  const msPerDay = 24 * 60 * 60 * 1000;
-  let day = Math.floor((estNow - eventStart) / msPerDay) + 1;
-  if (day < 1) day = 0;
-  if (day > 10) day = 10;
-
-  // Distance logic
-  const totalDistance = 422;
-  const kmRun = Math.min(day * 42.2, totalDistance);
-  const percent = ((kmRun / totalDistance) * 100).toFixed(1);
-
-  // Update page
-  document.querySelector('#progress-day strong').textContent = day;
-  document.querySelector('#progress-km strong').textContent = kmRun.toFixed(1);
-  document.querySelector('#progress-km span').textContent = percent + "%";
+    async function updateProgress() {
+      try {
+        const response = await fetch('progress.json');
+        const data = await response.json();
+  
+        const now = new Date();
+  
+        let latestTime = null;
+        let latestKm = 0;
+  
+        for (const timestamp in data) {
+          const entryTime = new Date(timestamp + "Z"); // ensure it's treated as UTC
+          if (entryTime <= now) {
+            if (!latestTime || entryTime > new Date(latestTime + "Z")) {
+              latestTime = timestamp;
+              latestKm = data[timestamp];
+            }
+          }
+        }
+  
+        if (latestTime) {
+          const totalKm = 422;
+          const currentDay = Math.min(10, Math.floor(latestKm / 42.2) + 1); // cap at 10
+          const percent = ((latestKm / totalKm) * 100).toFixed(1);
+  
+          document.getElementById('day-counter').textContent = `Current day: ${currentDay} / 10`;
+          document.getElementById('km-counter').textContent = `Kms run: ${latestKm.toFixed(1)} / 422km (${percent}%)`;
+        } else {
+          console.warn('No valid entries found in progress.json');
+        }
+      } catch (error) {
+        console.error('Error loading progress.json:', error);
+      }
+    }
+  
+    updateProgress();
     
   </script>
 </body>
