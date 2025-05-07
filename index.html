@@ -608,7 +608,7 @@
 
       if (latestTime) {
         const totalKm = 422;
-        const percent = ((latestKm / totalKm) * 100).toFixed(1);
+        const percent = ((latestKm / totalKm) * 100).toFixed(0);
 
         // Calculate day since May 16, 2025 (Day 1)
         const startDate = new Date(Date.UTC(2025, 4, 16)); // Months are 0-indexed (May = 4)
