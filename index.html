@@ -615,7 +615,9 @@
         const currentDay = Math.min(10, Math.max(0, dayOffset)); // Clamp between 1 and 10
 
         document.getElementById('progress-day').textContent = `Current day: ${currentDay} / 10`;
+        document.getElementById('progress-day').classList.add("bold");
         document.getElementById('progress-km').textContent = `Kms run: ${latestKm.toFixed(1)} / 422km (${percent}%)`;
+        document.getElementById('progress-km').classList.add("bold");
       } else {
         console.warn('No valid entries found in progress.json');
       }
