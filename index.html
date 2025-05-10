@@ -425,7 +425,7 @@
         if (!livemarker) {
           // If the live marker doesn't exist yet, create it
           livemarker = L.marker([data.lat, data.lon]).addTo(map)
-            .bindPopup("<strong>Dave's live location</strong><br><em>(Static until May 16th)</em>")
+            .bindPopup("<strong>Dave's live location</strong><br><em>(Come say hi!)</em>")
         } else {
           // Otherwise, just update the marker's position
           livemarker.setLatLng([data.lat, data.lon]);
