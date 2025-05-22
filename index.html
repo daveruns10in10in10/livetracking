@@ -402,10 +402,9 @@
     
     // live marker -> to pull from the server and the live location
 
-    // SET THE INITIAL VIEW FOR THE MAP (Currently St. John's)
-    var map = L.map('map', {
-      zoomControl: false
-    }).setView([47.55419, -52.7184], 14);
+   // var map = L.map('map', {
+   //   zoomControl: false
+   // }).setView([47.55419, -52.7184], 14);
     
    // Add live marker
     var livemarker; // Declare but don't create the marker yet
@@ -435,13 +434,19 @@
         console.error('Error fetching live location:', err);
       });
     }
-  
+
+    
     // Update location every 5 seconds
     setInterval(updateLocation, 5000);
   
     // Fetch once immediately to create the marker
     updateLocation();
 
+    // SET THE INITIAL VIEW FOR THE MAP (Currently St. John's) (TRYING TO EDIT TO DAVE'S LOCATION)
+    var map = L.map('map', {
+      zoomControl: false
+    }).setView([data.lat, data.lon], 14);
+    
     // CLOSE LEFT SIDEBAR WHEN BUTTON IS CLICKED
     function isMobile() {
       return window.innerWidth <= 768;
