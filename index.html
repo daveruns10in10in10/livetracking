@@ -402,33 +402,13 @@
     
     // live marker -> to pull from the server and the live location
 
-   //var map = L.map('map', {
-   //  zoomControl: false
-   //}).setView([47.55419, -52.7184], 14);
+   var map = L.map('map', {
+     zoomControl: false
+   }).setView([50.447865, -104.61733], 14);
 
-    const mapDates = [
-      { date: "2025-05-22", coords: [50.447865, -104.61733] }, // Regina
-      { date: "2025-05-23", coords: [50.447865, -104.61733] }, // Regina
-      { date: "2025-05-24", coords: [49.29061, -123.1698] },   // Vancouver
-      { date: "2025-05-25", coords: [51.065655, -114.110575] } // Calgary
-    ];
-    
-    const today = new Date();
-    let selectedCoords = [51.065655, -114.110575]; // Default to Calgary
-    
-    for (let i = 0; i < mapDates.length; i++) {
-      const mapDate = new Date(mapDates[i].date + "T00:00:00");
-      const nextDate = i + 1 < mapDates.length ? new Date(mapDates[i + 1].date + "T00:00:00") : null;
-    
-      if (today >= mapDate && (!nextDate || today < nextDate)) {
-        selectedCoords = mapDates[i].coords;
-        break;
-      }
-    }
-    
-    const map = L.map('map', {
-      zoomControl: false
-    }).setView(selectedCoords, 14);
+    // [50.447865, -104.61733] }, // Regina
+    // [49.29061, -123.1698] },   // Vancouver
+    // [51.065655, -114.110575] } // Calgary
     
    // Add live marker
     var livemarker; // Declare but don't create the marker yet
